@@ -1,9 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
-
-#define MAX_SIZE (unsigned long)2E10
-
-unsigned char primes[MAX_SIZE];
 
 void sieve(unsigned long n)
 {
@@ -12,12 +9,13 @@ void sieve(unsigned long n)
 
     start = clock();
     //Init
-    unsigned char finish;
+    char* primes = (char*) malloc(n);
+    char finish = 0;
     unsigned long i, k, j;
     for(i = 0; i < n+1; i++) primes[i] = 1;
 
     //Process
-    /*for(k = 2; (k*k) <= n; ) {
+    for(k = 2; (k*k) <= n && finish == 0; ) {
         for(j = k*k; j<=n; j++) {
             if(j%k == 0) primes[j] = 0; 
         }
@@ -29,7 +27,6 @@ void sieve(unsigned long n)
                 break;
             }
         }
-        if(finish == 1) break;
     }
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -42,7 +39,7 @@ void sieve(unsigned long n)
         }
     }
     printf("PRIMES: %lu\n", c);
-    printf("TIME: %lf\n", cpu_time_used);*/
+    printf("TIME: %lf\n", cpu_time_used);
 }
 
 int main(){
