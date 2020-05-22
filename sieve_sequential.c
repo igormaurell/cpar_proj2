@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include <time.h>
 
-void sieve(int n)
+#define MAX_SIZE (unsigned long)2E10
+
+unsigned char primes[MAX_SIZE];
+
+void sieve(unsigned long n)
 {
     clock_t start, end;
     double cpu_time_used;
 
     start = clock();
     //Init
-    int primes[n+1];
-    for(int i = 0; i < n+1; i++) primes[i] = 1;
-    int k, finish;
+    unsigned char finish;
+    unsigned long i, k, j;
+    for(i = 0; i < n+1; i++) primes[i] = 1;
 
     //Process
-    for(k = 2; (k*k) <= n; ) {
-        for(int j = k*k; j<=n; j++) {
+    /*for(k = 2; (k*k) <= n; ) {
+        for(j = k*k; j<=n; j++) {
             if(j%k == 0) primes[j] = 0; 
         }
         finish = 1;
-        for (int i = k+1; i < n+1; i++) {
+        for (i = k+1; i < n+1; i++) {
             if(primes[i] == 1) {
                 finish = 0;
                 k = i;
@@ -31,18 +35,19 @@ void sieve(int n)
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
 
     //Out
-    printf("PRIMES: ");
+    unsigned long c = 0;
     for(int i = 2; i < n+1; i++) {
         if(primes[i] == 1) {
-            printf("%d ", i);
+            c++;
         }
     }
-    printf("\nTIME: %lf\n", cpu_time_used);
+    printf("PRIMES: %lu\n", c);
+    printf("TIME: %lf\n", cpu_time_used);*/
 }
 
 int main(){
-    int n;
-    scanf("%d", &n);
+    unsigned long n;
+    scanf("%lu", &n);
 
     sieve(n);
     return 0;
