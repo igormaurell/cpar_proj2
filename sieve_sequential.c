@@ -9,7 +9,7 @@ void sieve(unsigned long n)
 
     start = clock();
     //Init
-    char* primes = (char*) malloc(n);
+    char* primes = (char*) malloc(n+1);
     char finish = 0;
     unsigned long i, k, j;
     for(i = 0; i < n+1; i++) primes[i] = 1;

@@ -14,7 +14,7 @@ void sieve(unsigned long n)
     clock_t start, end;
     double cpu_time_used;
 
-    char* primes = (char*) malloc(n);
+    char* primes = (char*) malloc(n+1);
     char finish = 0;
     unsigned long i, k, j;
 
